@@ -6,6 +6,7 @@ using UnityEngine.XR;
 public class Cut : MonoBehaviour
 {
     public GameObject Scissors;
+    private BoxCollider m_Scissors_Collider;
     private Animator m_Animator;
     private AudioSource m_Audio;
 
@@ -18,6 +19,7 @@ public class Cut : MonoBehaviour
         UnityEngine.XR.InputDevices.GetDevicesAtXRNode(UnityEngine.XR.XRNode.RightHand, rightHandDevices);
         m_Animator = Scissors.GetComponent<Animator>();
         m_Audio = GetComponent<AudioSource>();
+        m_Scissors_Collider = Scissors.GetComponent<BoxCollider>();
     }
 
     // Update is called once per frame
@@ -28,11 +30,12 @@ public class Cut : MonoBehaviour
             bool triggerValue;
             bool isIdle = m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Idle");
             if(isIdle && contr.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out triggerValue) && triggerValue) {
-                Debug.Log("CUT");
                 m_Animator.SetTrigger("BeginCut");
                 m_Audio.Play();
+                m_Scissors_Collider.enabled = true;
             } else {
                 m_Animator.ResetTrigger("BeginCut");
+                m_Scissors_Collider.enabled = false;
             }
 
         }
