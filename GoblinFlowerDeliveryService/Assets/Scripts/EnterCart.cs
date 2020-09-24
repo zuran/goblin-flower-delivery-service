@@ -7,7 +7,10 @@ public class EnterCart : MonoBehaviour
 {
     public GameObject Rig;
     public GameObject Cart;
-
+    public Transform CartFlowerPosition;
+    public Transform PlayerHand;
+    public GameObject BouquetBucket;
+    
     private bool _isPlayerInside = false;
 
     public void GetInOrOutOfCart()
@@ -23,6 +26,9 @@ public class EnterCart : MonoBehaviour
             Rig.GetComponent<ThumbstickLocomotion>().enabled = true;
             Rig.GetComponent<SnapTurnProvider>().enabled = true;
             Rig.GetComponent<CharacterController>().enabled = true;
+            BouquetBucket.transform.position = PlayerHand.position;
+            BouquetBucket.transform.rotation = Quaternion.identity;
+            BouquetBucket.transform.parent = null;
         } else
         {
             Cart.GetComponent<Follower>().IsPlayerInCart = true;
@@ -32,6 +38,9 @@ public class EnterCart : MonoBehaviour
             Rig.GetComponent<ThumbstickLocomotion>().enabled = false;
             Rig.GetComponent<SnapTurnProvider>().enabled = false;
             Rig.GetComponent<CharacterController>().enabled = false;
+            BouquetBucket.transform.position = CartFlowerPosition.position;
+            BouquetBucket.transform.rotation = Cart.transform.rotation;
+            BouquetBucket.transform.parent = Cart.transform;
         }
 
         _isPlayerInside = !_isPlayerInside;

@@ -8,13 +8,14 @@ public class VaseConnect : MonoBehaviour
 {
     void OnTriggerStay(Collider collider)
     {
-        //if (collider.gameObject.transform.parent == null) return;
-        var parent = collider.gameObject; //.transform.parent.gameObject;
-        if (parent.tag != "Flower") return;
-        var rb = parent.GetComponent<Rigidbody>();
+        var flower = collider.gameObject;
+        if (flower.tag != "Flower" && flower.transform.parent != null)
+            flower = flower.transform.parent.gameObject;
+        if (flower.tag != "Flower") return;
+        var rb = flower.GetComponent<Rigidbody>();
         rb.isKinematic = true;
         rb.useGravity = false;
-        parent.transform.SetParent(transform);
+        flower.transform.SetParent(transform);
     }
 
     public void GrabFlower(GameObject flower) {
