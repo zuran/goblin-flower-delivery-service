@@ -4,7 +4,6 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Text;
-using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +11,8 @@ public class GameManager : MonoBehaviour
     public Canvas QuestAlertCanvas;
     public TextMeshProUGUI RiddleComponent;
     public TextMeshProUGUI AddressComponent;
+
+    public GameObject FlowerAttachPoint;
 
     public enum Materials
     {
@@ -25,6 +26,22 @@ public class GameManager : MonoBehaviour
     }
 
     public List<Materials> _correctArrangement;
+
+    public void CheckFlowers()
+    {
+        var uniqueMaterials = new HashSet<Materials>();
+        foreach(var ingredient in FlowerAttachPoint.GetComponentsInChildren<Ingredient>())
+        {
+            //var ingredient = transform.gameObject.GetComponent<Ingredient>();
+            uniqueMaterials.Add(ingredient.material);
+        }
+        var ingredients = new StringBuilder();
+        foreach(var ingredient in uniqueMaterials)
+        {
+            ingredients.Append(ingredient.ToString());
+        }
+        Debug.Log(ingredients);
+    }
 
     // Start is called before the first frame update
     void Start()
