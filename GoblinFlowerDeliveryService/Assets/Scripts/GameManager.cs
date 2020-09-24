@@ -27,20 +27,21 @@ public class GameManager : MonoBehaviour
 
     public List<Materials> _correctArrangement;
 
-    public void CheckFlowers()
+    public void ScoreArrangement()
     {
+        var score = 0;
         var uniqueMaterials = new HashSet<Materials>();
         foreach(var ingredient in FlowerAttachPoint.GetComponentsInChildren<Ingredient>())
-        {
-            //var ingredient = transform.gameObject.GetComponent<Ingredient>();
             uniqueMaterials.Add(ingredient.material);
-        }
         var ingredients = new StringBuilder();
         foreach(var ingredient in uniqueMaterials)
         {
             ingredients.Append(ingredient.ToString());
+            if (_correctArrangement.Contains(ingredient)) score++;
+            else score--;
         }
         Debug.Log(ingredients);
+        Debug.Log(score);
     }
 
     // Start is called before the first frame update
@@ -108,7 +109,7 @@ public class GameManager : MonoBehaviour
             } while (used.Contains(index));
             used.Add(index);
             riddle.Append(clues[index] + "\n");
-            _correctArrangement.Add(answers[i]);
+            _correctArrangement.Add(answers[index]);
         }
 
         var answerString = new StringBuilder("Answer: ");
