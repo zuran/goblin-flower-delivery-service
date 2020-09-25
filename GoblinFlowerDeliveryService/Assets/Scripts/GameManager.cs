@@ -22,7 +22,8 @@ public class GameManager : MonoBehaviour
         MorningGlory,
         Morel,
         Enoki,
-        Cactus
+        Cactus,
+        Daisy
     }
 
     public List<Materials> _correctArrangement;
@@ -85,17 +86,19 @@ public class GameManager : MonoBehaviour
             Materials.MorningGlory,
             Materials.Morel,
             Materials.Enoki,
-            Materials.Cactus
+            Materials.Cactus,
+            Materials.Daisy
         };
 
         var clues = new string[] {
             "surprisingly grounded, mottled, and rounded",
             "the bulb doesn't glow but from it this grows",
             "yellow blooming weeds fit for a princess",
-            "best before night, may bloom at first light(this is terrible i know)",
+            "best before night, may bloom at first light",
             "a winsome ridged treat you'll be tempted to eat",
             "worthy of a pallid ballad, soup, or salad",
-            "a prickly pear for the adventurous one" };
+            "a prickly pear for the adventurous one",
+            "looks sweet upon the seat of a bicycle built for two" };
 
         var riddle = new StringBuilder("Your arrangment must include ingredients matching these descriptions\n");
         var rand = new System.Random();
