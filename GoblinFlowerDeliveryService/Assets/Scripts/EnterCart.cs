@@ -10,6 +10,8 @@ public class EnterCart : MonoBehaviour
     public Transform CartFlowerPosition;
     public Transform PlayerHand;
     public GameObject BouquetBucket;
+
+    //private Vector3 _offset = new Vector3(-.501f, 0.086f, -0.19f);
     
     private bool _isPlayerInside = false;
 
@@ -26,21 +28,27 @@ public class EnterCart : MonoBehaviour
             Rig.GetComponent<ThumbstickLocomotion>().enabled = true;
             Rig.GetComponent<SnapTurnProvider>().enabled = true;
             Rig.GetComponent<CharacterController>().enabled = true;
-            BouquetBucket.transform.position = PlayerHand.position;
-            BouquetBucket.transform.rotation = Quaternion.identity;
-            BouquetBucket.transform.parent = null;
+            if (!BouquetBucket.GetComponent<Bucket>().Delivered)
+            {
+                BouquetBucket.transform.position = PlayerHand.position;
+                BouquetBucket.transform.rotation = Quaternion.identity;
+                BouquetBucket.transform.parent = null;
+            }
         } else
         {
             Cart.GetComponent<Follower>().IsPlayerInCart = true;
             Rig.GetComponent<Follower>().IsPlayerInCart = true;
-            Rig.transform.position = Cart.transform.position;
+            Rig.transform.position = Cart.transform.position;// - _offset;
             Rig.transform.rotation = Cart.transform.rotation;
             Rig.GetComponent<ThumbstickLocomotion>().enabled = false;
             Rig.GetComponent<SnapTurnProvider>().enabled = false;
             Rig.GetComponent<CharacterController>().enabled = false;
-            BouquetBucket.transform.position = CartFlowerPosition.position;
-            BouquetBucket.transform.rotation = Cart.transform.rotation;
-            BouquetBucket.transform.parent = Cart.transform;
+            if (!BouquetBucket.GetComponent<Bucket>().Delivered)
+            {
+                BouquetBucket.transform.position = CartFlowerPosition.position;
+                BouquetBucket.transform.rotation = Cart.transform.rotation;
+                BouquetBucket.transform.parent = Cart.transform;
+            }
         }
 
         _isPlayerInside = !_isPlayerInside;

@@ -12,7 +12,9 @@ public class Follower : MonoBehaviour
     public bool IsPlayerInCart = false;
 
     private float distanceTravelled = 90.89914f;
-    
+    private Vector3 _offset = new Vector3(-.501f, 0.086f, -0.19f);
+
+
     public void ToggleStartStop()
     {
         if(IsPlayerInCart)
@@ -33,6 +35,7 @@ public class Follower : MonoBehaviour
         if (!Moving) return;
         distanceTravelled += speed * Time.deltaTime;
         transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled);
+        //if (gameObject.tag == "Player") transform.position = transform.position - _offset;
         transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled);
     }
 }

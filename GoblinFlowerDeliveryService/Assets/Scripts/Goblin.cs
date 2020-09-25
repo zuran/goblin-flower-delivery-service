@@ -54,6 +54,7 @@ public class Goblin : MonoBehaviour
             obj.transform.position = RightHandPosition.position;
             obj.transform.rotation = RightHandPosition.rotation;
             obj.transform.parent = RightHandPosition;
+            obj.GetComponent<Bucket>().Delivered = true;
             StartCoroutine(ReceivedFlowers());
         }
     }
