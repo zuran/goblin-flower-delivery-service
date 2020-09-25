@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Text;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class GameManager : MonoBehaviour
     public Canvas QuestAlertCanvas;
     public TextMeshProUGUI RiddleComponent;
     public TextMeshProUGUI AddressComponent;
+    public TextMeshProUGUI NameComponent;
 
     public GameObject FlowerAttachPoint;
 
@@ -22,10 +24,23 @@ public class GameManager : MonoBehaviour
         MorningGlory,
         Morel,
         Enoki,
-        Cactus
+        Cactus,
+        Daisy
     }
 
+    private string[] _goblinNames = new string []
+    {
+        "Krusk",
+        "Blifee",
+        "Wrunk"
+    };
+
+    private int _goblinIndex = 0;
+
     public List<Materials> _correctArrangement;
+
+    public int Score = 0;
+    public string GoblinName = "";
 
     public void ScoreArrangement()
     {
@@ -40,25 +55,17 @@ public class GameManager : MonoBehaviour
             if (_correctArrangement.Contains(ingredient)) score++;
             else score--;
         }
+        Score = score;
         Debug.Log(ingredients);
         Debug.Log(score);
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    public void ClickMailbox()
+    public void NewQuest()
     {
         ActivateNewQuest();
+    }
+    public void ClickMailbox()
+    {
         QuestAlertCanvas.enabled = true;
     }
 
@@ -72,7 +79,17 @@ public class GameManager : MonoBehaviour
     {
         AddressComponent.SetText(GenerateAddress());
         RiddleComponent.SetText(GenerateRiddle());
+        NameComponent.SetText(GenerateName());
     }
+
+    private string GenerateName()
+    {
+        var index = new System.Random().Next(0, _goblinNames.Length);
+        _goblinIndex = index;
+        GoblinName = _goblinNames[index];
+        return "Name: " + _goblinNames[index];
+    }
+
     private string GenerateRiddle()
     {
         _correctArrangement = new List<Materials>();
@@ -85,19 +102,21 @@ public class GameManager : MonoBehaviour
             Materials.MorningGlory,
             Materials.Morel,
             Materials.Enoki,
-            Materials.Cactus
+            Materials.Cactus,
+            Materials.Daisy
         };
 
         var clues = new string[] {
-            "surprisingly grounded, mottled, and rounded",
-            "the bulb doesn't glow but from it this grows",
-            "yellow blooming weeds fit for a princess",
-            "best before night, may bloom at first light(this is terrible i know)",
-            "a winsome ridged treat you'll be tempted to eat",
-            "worthy of a pallid ballad, soup, or salad",
-            "a prickly pear for the adventurous one" };
+            "-Surprisingly grounded, mottled, and rounded",
+            "-The bulb doesn't glow but from it this grows",
+            "-Yellow blooming weeds fit for a princess",
+            "-Best before night, may bloom at first light",
+            "-A winsome ridged treat you'll be tempted to eat",
+            "-Worthy of a pallid ballad, soup, or salad",
+            "-A prickly pear for the adventurous one",
+            "-Looks sweet upon the seat of a bicycle built for two" };
 
-        var riddle = new StringBuilder("Your arrangment must include ingredients matching these descriptions\n");
+        var riddle = new StringBuilder("Your arrangment must include ingredients matching these descriptions\n\n");
         var rand = new System.Random();
         var used = new List<int>();
         for (int i = 0; i < 3; i++)
@@ -126,7 +145,7 @@ public class GameManager : MonoBehaviour
     {
         var addresses = new string[] { "1020", "1021", "1022", "4041", "4042", "4043", "4044" };
         var index = new System.Random().Next(0, addresses.Length);
-        return addresses[index];
+        return "Address: " + addresses[index];
     }
 
 }
