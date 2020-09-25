@@ -108,14 +108,14 @@ public class GameManager : MonoBehaviour
         };
 
         var clues = new string[] {
-            "-surprisingly grounded, mottled, and rounded",
-            "-the bulb doesn't glow but from it this grows",
-            "-yellow blooming weeds fit for a princess",
-            "-best before night, may bloom at first light",
-            "-a winsome ridged treat you'll be tempted to eat",
-            "-worthy of a pallid ballad, soup, or salad",
-            "-a prickly pear for the adventurous one",
-            "-looks sweet upon the seat of a bicycle built for two" };
+            "-Surprisingly grounded, mottled, and rounded",
+            "-The bulb doesn't glow but from it this grows",
+            "-Yellow blooming weeds fit for a princess",
+            "-Best before night, may bloom at first light",
+            "-A winsome ridged treat you'll be tempted to eat",
+            "-Worthy of a pallid ballad, soup, or salad",
+            "-A prickly pear for the adventurous one",
+            "-Looks sweet upon the seat of a bicycle built for two" };
 
         var riddle = new StringBuilder("Your arrangment must include ingredients matching these descriptions\n\n");
         var rand = new System.Random();
