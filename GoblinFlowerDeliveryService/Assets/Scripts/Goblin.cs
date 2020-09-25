@@ -12,8 +12,6 @@ public class Goblin : MonoBehaviour
 
     public GameObject SurprisedGoblin;
 
-    public XRController LeftController;
-    public XRController RightController;
     // Start is called before the first frame update
     void Start()
     {
