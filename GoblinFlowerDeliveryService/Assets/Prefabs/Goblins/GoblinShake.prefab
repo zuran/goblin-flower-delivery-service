@@ -453,7 +453,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -291379150988269334, guid: 2f496a39ec9a0b8479bc566c349d6a1b, type: 3}
+  - {fileID: 2100000, guid: 29023d6cbea7c2141bd9b713c8c65103, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -879,7 +879,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -3143854153004574606, guid: 2f496a39ec9a0b8479bc566c349d6a1b, type: 3}
+  - {fileID: 2100000, guid: 29023d6cbea7c2141bd9b713c8c65103, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1302,7 +1302,7 @@ GameObject:
   - component: {fileID: 7529668790212706511}
   - component: {fileID: 8067205476995770850}
   m_Layer: 0
-  m_Name: Shaking Head No
+  m_Name: GoblinShake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
