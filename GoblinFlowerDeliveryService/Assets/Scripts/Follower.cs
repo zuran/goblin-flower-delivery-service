@@ -7,19 +7,32 @@ public class Follower : MonoBehaviour
 {
     public PathCreator pathCreator;
     public float speed = 5;
-    float distanceTravelled;
+    public bool Moving = false;
+    public GameObject StartStopButton;
+    public bool IsPlayerInCart = false;
+
+    private float distanceTravelled = 90.89914f;
+    
+    public void ToggleStartStop()
+    {
+        if(IsPlayerInCart)
+            Moving = !Moving;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (gameObject.tag == "Player") return;
+        transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled);
+        transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled);
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        if (!Moving) return;
         distanceTravelled += speed * Time.deltaTime;
         transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled);
         transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled);
-
     }
 }

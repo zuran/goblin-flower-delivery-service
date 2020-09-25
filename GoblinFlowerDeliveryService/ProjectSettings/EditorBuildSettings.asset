@@ -4,7 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/FlowerArrangement.unity
+    guid: dda0b5278da992140968bda1bcc6fdb3
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 9e47df8d94982234fbb01b9c03103f63, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 75c8d3e67bad160448bd247d4430821d, type: 2}
