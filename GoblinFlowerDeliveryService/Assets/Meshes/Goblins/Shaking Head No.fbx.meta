@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 2f496a39ec9a0b8479bc566c349d6a1b
+guid: d05ba088ed711ca46bfdc2957fa09d17
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable:
   - first:
-      74: -203655887218126122
-    second: ShakingGob
+      74: -1498010087492872569
+    second: ShakeGob
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -35,11 +35,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: ShakingGob
-      takeName: mixamo.com
+      name: ShakeGob
+      takeName: CINEMA_4D_Main
       internalID: 0
       firstFrame: 0
-      lastFrame: 54
+      lastFrame: 60
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

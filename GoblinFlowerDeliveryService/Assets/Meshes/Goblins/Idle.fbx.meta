@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4fa3bbfcf89ccb146a280ef4500dac79
+guid: 6d4faabd36753044cbcf3112a0f0c13f
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable:
   - first:
-      74: -203655887218126122
+      74: -1498010087492872569
     second: IdleGob
   externalObjects: {}
   materials:
@@ -36,10 +36,10 @@ ModelImporter:
     clipAnimations:
     - serializedVersion: 16
       name: IdleGob
-      takeName: mixamo.com
+      takeName: CINEMA_4D_Main
       internalID: 0
       firstFrame: 0
-      lastFrame: 59
+      lastFrame: 60
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

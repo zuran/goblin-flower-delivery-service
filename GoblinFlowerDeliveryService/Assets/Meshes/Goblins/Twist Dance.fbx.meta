@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: d9f4ff66a7be6714d8442756128b5f77
+guid: eb18d42a97329e44182f9bf6cb3ff7c0
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable:
   - first:
-      74: -203655887218126122
-    second: DancingGob
+      74: -1498010087492872569
+    second: DanceGob
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -35,8 +35,8 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: DancingGob
-      takeName: mixamo.com
+      name: DanceGob
+      takeName: CINEMA_4D_Main
       internalID: 0
       firstFrame: 0
       lastFrame: 283

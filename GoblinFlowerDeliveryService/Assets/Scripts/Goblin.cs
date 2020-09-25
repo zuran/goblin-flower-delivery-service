@@ -7,7 +7,9 @@ public class Goblin : MonoBehaviour
 {
     public Transform InsideLocation;
     public Transform OutsideLocation;
-    public Transform RightHandPosition;
+    public Transform HappyRightHandPosition;
+    public Transform SadRightHandPosition;
+
     public float WaitOutsideTime = 10f;
     public string Name = "";
 
@@ -45,15 +47,23 @@ public class Goblin : MonoBehaviour
             else
             {
                 Destroy(obj.GetComponent<XRGrabInteractable>());
-                obj.transform.position = RightHandPosition.position;
-                obj.transform.rotation = RightHandPosition.rotation;
-                obj.transform.parent = RightHandPosition;
                 obj.GetComponent<Bucket>().Delivered = true;
             }
 
             if (GM.Score < 2)
-            goblin = ShrugGoblin;
-            else goblin = SurprisedGoblin;
+            {
+                goblin = ShrugGoblin;
+                obj.transform.position = SadRightHandPosition.position;
+                obj.transform.rotation = SadRightHandPosition.rotation;
+                obj.transform.parent = SadRightHandPosition;
+            }
+            else
+            {
+                goblin = SurprisedGoblin;
+                obj.transform.position = HappyRightHandPosition.position;
+                obj.transform.rotation = HappyRightHandPosition.rotation;
+                obj.transform.parent = HappyRightHandPosition;
+            }
 
             transform.position = InsideLocation.position;
             transform.rotation = InsideLocation.rotation;

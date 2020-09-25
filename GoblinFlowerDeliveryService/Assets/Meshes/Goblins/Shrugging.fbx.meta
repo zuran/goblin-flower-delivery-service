@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 8b09a8b2cdb04494aa99a98daf81dbc1
+guid: a24c2b128e5e8064fbaffb0c9100dd23
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable:
   - first:
-      74: -203655887218126122
-    second: ShruggingGob
+      74: -1498010087492872569
+    second: ShrugGob
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -35,8 +35,8 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: ShruggingGob
-      takeName: mixamo.com
+      name: ShrugGob
+      takeName: CINEMA_4D_Main
       internalID: 0
       firstFrame: 0
       lastFrame: 60
