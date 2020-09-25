@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Text;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
 {
@@ -31,19 +32,15 @@ public class GameManager : MonoBehaviour
     {
         "Krusk",
         "Blifee",
-        "Wrunk",
-        "Loihx",
-        "Wryrilsi",
-        "Shifz",
-        "Oift",
-        "Warleehxia",
-        "Gneqea",
-        "Freelxa"
+        "Wrunk"
     };
 
     private int _goblinIndex = 0;
 
     public List<Materials> _correctArrangement;
+
+    public int Score = 0;
+    public string GoblinName = "";
 
     public void ScoreArrangement()
     {
@@ -58,6 +55,7 @@ public class GameManager : MonoBehaviour
             if (_correctArrangement.Contains(ingredient)) score++;
             else score--;
         }
+        Score = score;
         Debug.Log(ingredients);
         Debug.Log(score);
     }
@@ -88,6 +86,7 @@ public class GameManager : MonoBehaviour
     {
         var index = new System.Random().Next(0, _goblinNames.Length);
         _goblinIndex = index;
+        GoblinName = _goblinNames[index];
         return "Name: " + _goblinNames[index];
     }
 

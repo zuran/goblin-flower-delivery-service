@@ -9,20 +9,13 @@ public class Goblin : MonoBehaviour
     public Transform OutsideLocation;
     public Transform RightHandPosition;
     public float WaitOutsideTime = 10f;
+    public string Name = "";
 
     public GameObject SurprisedGoblin;
+    public GameObject ShrugGoblin;
+    public GameObject ShakeGoblin;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public GameManager GM;
 
     private bool _canAnswerDoor = true;
     public void AnswerDoor()
@@ -41,19 +34,33 @@ public class Goblin : MonoBehaviour
         var obj = other.gameObject;
         if (obj.transform.parent != null) obj = obj.transform.parent.gameObject;
 
-        if(obj.tag == "Bucket")
+        if (obj.tag == "Bucket" && obj.GetComponent<Bucket>().Delivered == false)
         {
+            GM.ScoreArrangement();
+            var goblin = gameObject;
+            if(GM.GoblinName != Name)
+            {
+                goblin = ShakeGoblin;
+            }
+            else
+            {
+                Destroy(obj.GetComponent<XRGrabInteractable>());
+                obj.transform.position = RightHandPosition.position;
+                obj.transform.rotation = RightHandPosition.rotation;
+                obj.transform.parent = RightHandPosition;
+                obj.GetComponent<Bucket>().Delivered = true;
+            }
+
+            if (GM.Score < 2)
+            goblin = ShrugGoblin;
+            else goblin = SurprisedGoblin;
+
             transform.position = InsideLocation.position;
             transform.rotation = InsideLocation.rotation;
             GetComponent<SphereCollider>().enabled = false;
-            SurprisedGoblin.transform.position = OutsideLocation.position;
-            SurprisedGoblin.transform.rotation = OutsideLocation.rotation;
-            Destroy(obj.GetComponent<XRGrabInteractable>());
-            obj.transform.position = RightHandPosition.position;
-            obj.transform.rotation = RightHandPosition.rotation;
-            obj.transform.parent = RightHandPosition;
-            obj.GetComponent<Bucket>().Delivered = true;
-            StartCoroutine(ReceivedFlowers());
+            goblin.transform.position = OutsideLocation.position;
+            goblin.transform.rotation = OutsideLocation.rotation;
+            StartCoroutine(ReceivedFlowers(goblin));
         }
     }
 
@@ -66,10 +73,11 @@ public class Goblin : MonoBehaviour
         yield return null;
     }
 
-    IEnumerator ReceivedFlowers()
+    IEnumerator ReceivedFlowers(GameObject goblin)
     {
         yield return new WaitForSeconds(15);
-        SurprisedGoblin.transform.position = InsideLocation.position;
-        SurprisedGoblin.transform.rotation = InsideLocation.rotation;
+        goblin.transform.position = InsideLocation.position;
+        goblin.transform.rotation = InsideLocation.rotation;
+        GetComponent<SphereCollider>().enabled = true;
     }
 }
