@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI AddressComponent;
     public TextMeshProUGUI NameComponent;
 
+    public Canvas InstructionCanvas;
+
     public GameObject FlowerAttachPoint;
 
     public enum Materials
@@ -58,6 +60,11 @@ public class GameManager : MonoBehaviour
         Score = score;
         Debug.Log(ingredients);
         Debug.Log(score);
+    }
+
+    public void CloseInstructions()
+    {
+        InstructionCanvas.enabled = false;
     }
 
     public void NewQuest()
